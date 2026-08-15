@@ -10,12 +10,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col text-foreground">
         <Header />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-brand-light bg-white/60 py-8 text-center text-sm text-foreground/60">
-          <p>よるのこえ Talent — 癒し系ASMR配信者事務所</p>
-          <p className="mt-1">© 2026 Yorunokoe Talent. 本サイトはプロトタイプ版です。</p>
+        <footer className="mt-8 bg-white/40 py-10 text-center text-sm text-foreground/50">
+          <p className="font-heading">🌙 よるのこえ Talent — 癒し系ASMR配信者事務所</p>
+          <p className="mt-2 text-xs tracking-wide">
+            © 2026 Yorunokoe Talent. 本サイトはプロトタイプ版です。
+          </p>
         </footer>
       </body>
     </html>

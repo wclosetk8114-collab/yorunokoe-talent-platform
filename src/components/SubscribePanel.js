@@ -34,24 +34,24 @@ export default function SubscribePanel({ talent, isLoggedIn, subscription }) {
   }
 
   return (
-    <div className="rounded-2xl border border-brand-light bg-white p-6">
-      <h2 className="text-lg font-bold text-brand">🌙 月額会員（ファンクラブ）</h2>
-      <p className="mt-1 text-xs text-foreground/60">
+    <div className="card-soft p-7">
+      <h2 className="font-heading text-lg font-bold text-brand-dark">🌙 月額会員（ファンクラブ）</h2>
+      <p className="mt-1 text-xs text-foreground/45">
         限定ASMR音源・配信アーカイブが楽しめます。
       </p>
 
-      <p className="mt-4 text-2xl font-bold text-foreground">
+      <p className="mt-6 text-2xl font-bold text-foreground">
         ¥{talent.monthly_plan_price?.toLocaleString()}
-        <span className="text-sm font-normal text-foreground/50"> / 月</span>
+        <span className="text-sm font-normal text-foreground/40"> / 月</span>
       </p>
 
-      {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
 
       {isActive ? (
-        <div className="mt-4 rounded-lg bg-accent/10 px-4 py-3 text-sm text-accent">
+        <div className="mt-5 rounded-2xl bg-accent-light px-4 py-3.5 text-sm text-accent">
           ✓ 会員登録中です
           {subscription?.current_period_end && (
-            <span className="block text-xs text-foreground/50">
+            <span className="block text-xs text-foreground/40">
               次回更新: {new Date(subscription.current_period_end).toLocaleDateString("ja-JP")}
             </span>
           )}
@@ -61,7 +61,7 @@ export default function SubscribePanel({ talent, isLoggedIn, subscription }) {
           type="button"
           onClick={handleSubscribe}
           disabled={loading}
-          className="mt-4 w-full rounded-full border-2 border-brand py-2.5 text-sm font-semibold text-brand transition hover:bg-brand hover:text-white disabled:opacity-50"
+          className="mt-5 w-full rounded-full bg-white py-3 text-sm font-semibold text-brand shadow-md shadow-brand-soft/40 ring-1 ring-inset ring-brand-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:text-white hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
         >
           {loading ? "処理中..." : "月額会員になる"}
         </button>

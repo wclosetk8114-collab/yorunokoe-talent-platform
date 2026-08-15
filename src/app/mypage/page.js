@@ -28,20 +28,22 @@ export default async function MyPage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-      <h1 className="text-xl font-bold text-brand">マイページ</h1>
-      <p className="mt-1 text-sm text-foreground/60">{user.email} でログイン中</p>
+    <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+      <h1 className="font-heading text-xl font-bold text-brand-dark">マイページ</h1>
+      <p className="mt-1 text-sm text-foreground/45">{user.email} でログイン中</p>
 
-      <section className="mt-8">
-        <h2 className="mb-3 text-sm font-bold text-foreground/70">加入中の月額会員</h2>
+      <section className="mt-10 animate-fade-in-up">
+        <h2 className="mb-4 text-sm font-bold text-foreground/55">🌙 加入中の月額会員</h2>
         {!subscriptions?.length && (
-          <p className="text-sm text-foreground/50">まだ加入しているタレントはいません。</p>
+          <p className="card-soft p-6 text-sm text-foreground/45">
+            まだ加入しているタレントはいません。
+          </p>
         )}
-        <div className="space-y-2">
+        <div className="space-y-3">
           {subscriptions?.map((s) => (
             <div
               key={s.id}
-              className="flex items-center justify-between rounded-xl border border-brand-light bg-white px-4 py-3"
+              className="card-soft flex items-center justify-between px-5 py-4"
             >
               <span>
                 {s.talents?.avatar_emoji} {s.talents?.display_name}
@@ -49,8 +51,8 @@ export default async function MyPage() {
               <span
                 className={`rounded-full px-3 py-1 text-xs font-semibold ${
                   s.status === "active"
-                    ? "bg-accent/10 text-accent"
-                    : "bg-foreground/10 text-foreground/50"
+                    ? "bg-accent-light text-accent"
+                    : "bg-brand-light/70 text-foreground/45"
                 }`}
               >
                 {s.status === "active" ? "会員中" : s.status}
@@ -60,16 +62,18 @@ export default async function MyPage() {
         </div>
       </section>
 
-      <section className="mt-10">
-        <h2 className="mb-3 text-sm font-bold text-foreground/70">投げ銭の履歴</h2>
+      <section className="mt-12 animate-fade-in-up">
+        <h2 className="mb-4 text-sm font-bold text-foreground/55">💜 投げ銭の履歴</h2>
         {!tips?.length && (
-          <p className="text-sm text-foreground/50">まだ投げ銭の履歴はありません。</p>
+          <p className="card-soft p-6 text-sm text-foreground/45">
+            まだ投げ銭の履歴はありません。
+          </p>
         )}
-        <div className="space-y-2">
+        <div className="space-y-3">
           {tips?.map((t) => (
             <div
               key={t.id}
-              className="flex items-center justify-between rounded-xl border border-brand-light bg-white px-4 py-3 text-sm"
+              className="card-soft flex items-center justify-between px-5 py-4 text-sm"
             >
               <span>
                 {t.talents?.avatar_emoji} {t.talents?.display_name}
@@ -78,8 +82,8 @@ export default async function MyPage() {
               <span
                 className={`rounded-full px-3 py-1 text-xs font-semibold ${
                   t.status === "paid"
-                    ? "bg-accent/10 text-accent"
-                    : "bg-foreground/10 text-foreground/50"
+                    ? "bg-accent-light text-accent"
+                    : "bg-brand-light/70 text-foreground/45"
                 }`}
               >
                 {t.status === "paid" ? "完了" : t.status}

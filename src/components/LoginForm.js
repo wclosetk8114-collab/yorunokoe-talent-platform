@@ -46,13 +46,15 @@ export default function LoginForm({ nextPath }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-6 space-y-3">
-      <div className="mb-4 flex rounded-full bg-brand-light p-1 text-sm">
+    <form onSubmit={handleSubmit} className="mt-7 space-y-3">
+      <div className="mb-5 flex rounded-full bg-brand-light/60 p-1 text-sm">
         <button
           type="button"
           onClick={() => setMode("login")}
-          className={`flex-1 rounded-full py-1.5 font-semibold transition ${
-            mode === "login" ? "bg-white text-brand shadow-sm" : "text-foreground/60"
+          className={`flex-1 rounded-full py-2 font-semibold transition-all duration-200 ${
+            mode === "login"
+              ? "bg-white text-brand shadow-sm shadow-brand-soft/50"
+              : "text-foreground/45"
           }`}
         >
           ログイン
@@ -60,8 +62,10 @@ export default function LoginForm({ nextPath }) {
         <button
           type="button"
           onClick={() => setMode("signup")}
-          className={`flex-1 rounded-full py-1.5 font-semibold transition ${
-            mode === "signup" ? "bg-white text-brand shadow-sm" : "text-foreground/60"
+          className={`flex-1 rounded-full py-2 font-semibold transition-all duration-200 ${
+            mode === "signup"
+              ? "bg-white text-brand shadow-sm shadow-brand-soft/50"
+              : "text-foreground/45"
           }`}
         >
           新規登録
@@ -74,7 +78,7 @@ export default function LoginForm({ nextPath }) {
           placeholder="表示名（任意）"
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
-          className="w-full rounded-lg border border-brand-light px-3 py-2 text-sm focus:border-brand focus:outline-none"
+          className="w-full rounded-2xl bg-brand-light/40 px-4 py-2.5 text-sm placeholder:text-foreground/35 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-soft"
         />
       )}
       <input
@@ -83,7 +87,7 @@ export default function LoginForm({ nextPath }) {
         placeholder="メールアドレス"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full rounded-lg border border-brand-light px-3 py-2 text-sm focus:border-brand focus:outline-none"
+        className="w-full rounded-2xl bg-brand-light/40 px-4 py-2.5 text-sm placeholder:text-foreground/35 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-soft"
       />
       <input
         type="password"
@@ -92,16 +96,16 @@ export default function LoginForm({ nextPath }) {
         placeholder="パスワード（6文字以上）"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="w-full rounded-lg border border-brand-light px-3 py-2 text-sm focus:border-brand focus:outline-none"
+        className="w-full rounded-2xl bg-brand-light/40 px-4 py-2.5 text-sm placeholder:text-foreground/35 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-soft"
       />
 
-      {error && <p className="text-xs text-red-600">{error}</p>}
+      {error && <p className="text-xs text-red-500">{error}</p>}
       {notice && <p className="text-xs text-accent">{notice}</p>}
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-full bg-brand py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:opacity-50"
+        className="w-full rounded-full bg-brand py-3 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
       >
         {loading ? "処理中..." : mode === "signup" ? "登録する" : "ログインする"}
       </button>

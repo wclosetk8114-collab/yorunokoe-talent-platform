@@ -48,26 +48,30 @@ export default async function DemoCheckoutPage({ searchParams }) {
   }
 
   return (
-    <div className="mx-auto max-w-md px-4 py-14 sm:px-6">
-      <div className="rounded-2xl border border-brand-light bg-white p-8 shadow-sm">
-        <p className="mb-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
+    <div className="relative mx-auto max-w-md overflow-hidden px-4 py-20 sm:px-6">
+      <div
+        className="glow-blob animate-drift h-64 w-64 bg-glow"
+        style={{ top: "-3rem", right: "-4rem" }}
+      />
+      <div className="card-soft relative animate-fade-in-up p-8">
+        <p className="mb-3 inline-block rounded-full bg-amber-100/80 px-3 py-1 text-xs font-semibold text-amber-700">
           テスト環境・デモ決済
         </p>
-        <h1 className="text-xl font-bold text-brand">{summary.title}</h1>
-        <p className="mt-1 text-sm text-foreground/60">
+        <h1 className="font-heading text-xl font-bold text-brand-dark">{summary.title}</h1>
+        <p className="mt-1 text-sm text-foreground/50">
           {summary.emoji} {summary.talentName}
         </p>
 
-        <dl className="mt-6 space-y-2 border-t border-brand-light pt-4 text-sm">
+        <dl className="mt-6 space-y-2.5 border-t border-brand-light pt-5 text-sm">
           {summary.lines.map(([label, value]) => (
             <div key={label} className="flex justify-between gap-4">
-              <dt className="text-foreground/50">{label}</dt>
+              <dt className="text-foreground/40">{label}</dt>
               <dd className="text-right font-medium text-foreground">{value}</dd>
             </div>
           ))}
         </dl>
 
-        <p className="mt-6 rounded-lg bg-brand-light px-4 py-3 text-xs leading-relaxed text-foreground/70">
+        <p className="mt-6 rounded-2xl bg-brand-light/50 px-4 py-3.5 text-xs leading-relaxed text-foreground/60">
           この環境では決済プロバイダ（Stripe）が未接続のため、実際の課金は発生しません。
           下のボタンで決済完了の動作を確認できます。本番接続後はここが実際のカード決済画面に置き換わります。
         </p>

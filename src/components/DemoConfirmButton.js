@@ -28,12 +28,12 @@ export default function DemoConfirmButton({ type, id }) {
 
   return (
     <div className="mt-6">
-      {error && <p className="mb-2 text-xs text-red-600">{error}</p>}
+      {error && <p className="mb-2 text-xs text-red-500">{error}</p>}
       <button
         type="button"
         onClick={handleConfirm}
         disabled={loading}
-        className="w-full rounded-full bg-brand py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:opacity-50"
+        className="w-full rounded-full bg-brand py-3 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
       >
         {loading ? "処理中..." : "支払いを完了する（デモ）"}
       </button>

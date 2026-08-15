@@ -47,11 +47,11 @@ export default function TipPanel({ talent, isLoggedIn }) {
   }
 
   return (
-    <div className="rounded-2xl border border-brand-light bg-white p-6">
-      <h2 className="text-lg font-bold text-brand">💜 投げ銭で応援する</h2>
-      <p className="mt-1 text-xs text-foreground/60">単発の応援ギフトです。</p>
+    <div className="card-soft p-7">
+      <h2 className="font-heading text-lg font-bold text-brand-dark">💜 投げ銭で応援する</h2>
+      <p className="mt-1 text-xs text-foreground/45">そっと届く、単発の応援ギフトです。</p>
 
-      <div className="mt-4 grid grid-cols-4 gap-2">
+      <div className="mt-5 grid grid-cols-4 gap-2">
         {PRESET_AMOUNTS.map((a) => (
           <button
             key={a}
@@ -60,10 +60,10 @@ export default function TipPanel({ talent, isLoggedIn }) {
               setAmount(a);
               setCustomAmount("");
             }}
-            className={`rounded-lg border px-2 py-2 text-sm font-semibold transition ${
+            className={`rounded-2xl px-2 py-2.5 text-sm font-semibold transition-all duration-200 ${
               !customAmount && amount === a
-                ? "border-brand bg-brand text-white"
-                : "border-brand-light text-foreground/70 hover:border-brand"
+                ? "bg-brand text-white shadow-md shadow-brand/25"
+                : "bg-brand-light/60 text-foreground/60 hover:bg-brand-light"
             }`}
           >
             ¥{a.toLocaleString()}
@@ -78,7 +78,7 @@ export default function TipPanel({ talent, isLoggedIn }) {
         placeholder="金額を直接入力"
         value={customAmount}
         onChange={(e) => setCustomAmount(e.target.value)}
-        className="mt-3 w-full rounded-lg border border-brand-light px-3 py-2 text-sm focus:border-brand focus:outline-none"
+        className="mt-3 w-full rounded-2xl bg-brand-light/40 px-4 py-2.5 text-sm placeholder:text-foreground/35 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-soft"
       />
 
       <textarea
@@ -86,16 +86,16 @@ export default function TipPanel({ talent, isLoggedIn }) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         rows={2}
-        className="mt-3 w-full resize-none rounded-lg border border-brand-light px-3 py-2 text-sm focus:border-brand focus:outline-none"
+        className="mt-3 w-full resize-none rounded-2xl bg-brand-light/40 px-4 py-2.5 text-sm placeholder:text-foreground/35 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-soft"
       />
 
-      {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
 
       <button
         type="button"
         onClick={handleTip}
         disabled={loading}
-        className="mt-4 w-full rounded-full bg-brand py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:opacity-50"
+        className="mt-5 w-full rounded-full bg-brand py-3 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
       >
         {loading ? "処理中..." : `¥${(effectiveAmount || 0).toLocaleString()} を投げ銭する`}
       </button>

@@ -8,27 +8,30 @@ export default async function Header() {
   } = await supabase.auth.getUser();
 
   return (
-    <header className="sticky top-0 z-20 border-b border-brand-light bg-white/80 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+    <header className="sticky top-0 z-20 bg-white/50 backdrop-blur-lg">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-xl">🌙</span>
-          <span className="text-lg font-bold tracking-tight text-brand">
+          <span className="font-heading text-lg font-bold tracking-wide text-brand">
             よるのこえ <span className="font-normal text-accent">Talent</span>
           </span>
         </Link>
-        <nav className="flex items-center gap-4 text-sm">
-          <Link href="/" className="hidden text-foreground/70 hover:text-brand sm:inline">
+        <nav className="flex items-center gap-5 text-sm">
+          <Link
+            href="/"
+            className="hidden text-foreground/60 transition hover:text-brand sm:inline"
+          >
             タレント一覧
           </Link>
           {user ? (
             <>
-              <Link href="/mypage" className="text-foreground/70 hover:text-brand">
+              <Link href="/mypage" className="text-foreground/60 transition hover:text-brand">
                 マイページ
               </Link>
               <form action="/api/auth/signout" method="post">
                 <button
                   type="submit"
-                  className="rounded-full border border-brand/30 px-4 py-1.5 text-brand transition hover:bg-brand-light"
+                  className="rounded-full bg-white/70 px-4 py-1.5 text-brand shadow-sm shadow-brand-soft/40 transition hover:bg-brand-light"
                 >
                   ログアウト
                 </button>
@@ -37,7 +40,7 @@ export default async function Header() {
           ) : (
             <Link
               href="/login"
-              className="rounded-full bg-brand px-4 py-1.5 text-white transition hover:bg-brand-dark"
+              className="rounded-full bg-brand px-5 py-2 text-white shadow-md shadow-brand/20 transition hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-lg"
             >
               ログイン / 新規登録
             </Link>
