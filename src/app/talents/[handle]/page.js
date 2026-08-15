@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import TipPanel from "@/components/TipPanel";
 import SubscribePanel from "@/components/SubscribePanel";
+import VoiceSample from "@/components/VoiceSample";
 
 export const dynamic = "force-dynamic";
 
@@ -60,6 +61,8 @@ export default async function TalentPage({ params }) {
       <p className="relative mt-7 whitespace-pre-line text-[15px] leading-loose text-foreground/65">
         {talent.bio}
       </p>
+
+      <VoiceSample handle={talent.handle} />
 
       <div className="relative mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
         <TipPanel talent={talent} isLoggedIn={!!user} />
