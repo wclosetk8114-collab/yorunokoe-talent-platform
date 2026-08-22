@@ -8,6 +8,10 @@ const AUDIO_PREFIX = {
   sora: "sora",
   hana: "karin",
   rui: "rui",
+  riku: "riku",
+  aoi: "aoi",
+  ren: "ren",
+  yu: "yu",
 };
 
 let activeAudioEl = null;
@@ -70,6 +74,7 @@ export default function VoiceSample({ handle }) {
       <div className="mt-4 space-y-3">
         <TrackButton src={`${base}_greeting.mp3`} label="あいさつボイス" icon="💬" />
         <TrackButton src={`${base}_asmr.mp3`} label="ASMR囁きサンプル" icon="🌙" />
+        <TrackButton src={`${base}_meditation.mp3`} label="誘導瞑想（3〜5分）" icon="🧘" />
       </div>
     </div>
   );
