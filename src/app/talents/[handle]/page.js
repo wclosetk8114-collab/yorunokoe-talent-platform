@@ -40,13 +40,13 @@ export default async function TalentPage({ params }) {
     <div className="relative mx-auto max-w-3xl overflow-hidden px-4 py-14 sm:px-6">
       <div
         className="glow-blob h-72 w-72"
-        style={{ top: "-2rem", right: "-4rem", backgroundColor: `${talent.accent_color}22` }}
+        style={{ top: "-2rem", right: "-4rem", backgroundColor: `${talent.accent_color}3d` }}
       />
 
       <div className="relative flex items-center gap-5 animate-fade-in-up">
         <div
           className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full text-4xl shadow-inner"
-          style={{ backgroundColor: `${talent.accent_color}17` }}
+          style={{ backgroundColor: `${talent.accent_color}33` }}
         >
           {talent.avatar_emoji}
         </div>

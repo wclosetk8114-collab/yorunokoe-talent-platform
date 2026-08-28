@@ -25,10 +25,9 @@ export default function SubscribePanel({ talent, isLoggedIn, subscription }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "エラーが発生しました。");
-      router.push(data.redirectUrl);
+      window.location.href = data.redirectUrl;
     } catch (e) {
       setError(e.message);
-    } finally {
       setLoading(false);
     }
   }
@@ -61,10 +60,13 @@ export default function SubscribePanel({ talent, isLoggedIn, subscription }) {
           type="button"
           onClick={handleSubscribe}
           disabled={loading}
-          className="mt-5 w-full rounded-full bg-white py-3 text-sm font-semibold text-brand shadow-md shadow-brand-soft/40 ring-1 ring-inset ring-brand-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:text-white hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
+          className="mt-5 w-full rounded-full bg-brand-light/60 py-3 text-sm font-semibold text-brand shadow-md shadow-brand-soft/30 ring-1 ring-inset ring-brand-soft/50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:text-white hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
         >
           {loading ? "処理中..." : "月額会員になる"}
         </button>
+      )}
+      {!isActive && (
+        <p className="mt-2 text-center text-[11px] text-foreground/35">Stripeの決済ページに移動します（テストモード）</p>
       )}
     </div>
   );

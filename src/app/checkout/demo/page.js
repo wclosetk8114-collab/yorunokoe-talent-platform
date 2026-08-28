@@ -54,7 +54,7 @@ export default async function DemoCheckoutPage({ searchParams }) {
         style={{ top: "-3rem", right: "-4rem" }}
       />
       <div className="card-soft relative animate-fade-in-up p-8">
-        <p className="mb-3 inline-block rounded-full bg-amber-100/80 px-3 py-1 text-xs font-semibold text-amber-700">
+        <p className="mb-3 inline-block rounded-full bg-amber-400/15 px-3 py-1 text-xs font-semibold text-amber-300">
           テスト環境・デモ決済
         </p>
         <h1 className="font-heading text-xl font-bold text-brand-dark">{summary.title}</h1>

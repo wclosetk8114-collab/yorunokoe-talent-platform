@@ -70,7 +70,7 @@ export default async function HomePage() {
             >
               <div
                 className="mb-5 flex h-16 w-16 items-center justify-center rounded-full text-3xl transition group-hover:scale-105"
-                style={{ backgroundColor: `${talent.accent_color}17` }}
+                style={{ backgroundColor: `${talent.accent_color}33` }}
               >
                 {talent.avatar_emoji}
               </div>

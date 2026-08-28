@@ -8,21 +8,14 @@ const PRESET_AMOUNTS = [300, 500, 1000, 3000];
 export default function TipPanel({ talent, isLoggedIn }) {
   const router = useRouter();
   const [amount, setAmount] = useState(500);
-  const [customAmount, setCustomAmount] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  const effectiveAmount = customAmount ? Number(customAmount) : amount;
 
   async function handleTip() {
     setError("");
     if (!isLoggedIn) {
       router.push(`/login?next=/talents/${talent.handle}`);
-      return;
-    }
-    if (!effectiveAmount || effectiveAmount < 100) {
-      setError("100円以上の金額を指定してください。");
       return;
     }
     setLoading(true);
@@ -32,16 +25,15 @@ export default function TipPanel({ talent, isLoggedIn }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           talentId: talent.id,
-          amount: effectiveAmount,
+          amount,
           message,
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "エラーが発生しました。");
-      router.push(data.redirectUrl);
+      window.location.href = data.redirectUrl;
     } catch (e) {
       setError(e.message);
-    } finally {
       setLoading(false);
     }
   }
@@ -56,12 +48,9 @@ export default function TipPanel({ talent, isLoggedIn }) {
           <button
             key={a}
             type="button"
-            onClick={() => {
-              setAmount(a);
-              setCustomAmount("");
-            }}
+            onClick={() => setAmount(a)}
             className={`rounded-2xl px-2 py-2.5 text-sm font-semibold transition-all duration-200 ${
-              !customAmount && amount === a
+              amount === a
                 ? "bg-brand text-white shadow-md shadow-brand/25"
                 : "bg-brand-light/60 text-foreground/60 hover:bg-brand-light"
             }`}
@@ -71,22 +60,12 @@ export default function TipPanel({ talent, isLoggedIn }) {
         ))}
       </div>
 
-      <input
-        type="number"
-        min={100}
-        step={100}
-        placeholder="金額を直接入力"
-        value={customAmount}
-        onChange={(e) => setCustomAmount(e.target.value)}
-        className="mt-3 w-full rounded-2xl bg-brand-light/40 px-4 py-2.5 text-sm placeholder:text-foreground/35 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-soft"
-      />
-
       <textarea
         placeholder="応援メッセージ（任意）"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         rows={2}
-        className="mt-3 w-full resize-none rounded-2xl bg-brand-light/40 px-4 py-2.5 text-sm placeholder:text-foreground/35 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-soft"
+        className="mt-3 w-full resize-none rounded-2xl bg-brand-light/40 px-4 py-2.5 text-sm placeholder:text-foreground/35 focus:bg-brand-light/80 focus:outline-none focus:ring-2 focus:ring-brand-soft"
       />
 
       {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
@@ -95,10 +74,11 @@ export default function TipPanel({ talent, isLoggedIn }) {
         type="button"
         onClick={handleTip}
         disabled={loading}
-        className="mt-5 w-full rounded-full bg-brand py-3 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
+        className="mt-5 w-full rounded-full bg-brand py-3 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
       >
-        {loading ? "処理中..." : `¥${(effectiveAmount || 0).toLocaleString()} を投げ銭する`}
+        {loading ? "処理中..." : `¥${amount.toLocaleString()} を投げ銭する`}
       </button>
+      <p className="mt-2 text-center text-[11px] text-foreground/35">Stripeの決済ページに移動します（テストモード）</p>
     </div>
   );
 }

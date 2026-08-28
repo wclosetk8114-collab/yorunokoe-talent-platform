@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6f1fb;
-  --foreground: #4a4458;
-  --brand: #6e5a94;
-  --brand-dark: #574674;
-  --brand-light: #efe7fa;
-  --brand-soft: #d9c9ef;
-  --accent: #6fa8a0;
-  --accent-light: #e2f2ef;
-  --glow: #ffe9c7;
+  --background: #05040f;
+  --foreground: #e8e4f8;
+  --brand: #a48cff;
+  --brand-dark: #f1ecff;
+  --brand-deep: #4b3d99;
+  --brand-light: #16132e;
+  --brand-soft: #3d3572;
+  --accent: #f4d58d;
+  --accent-light: #2a2440;
+  --glow: #8fb6ff;
 }
 
 @theme inline {
@@ -17,6 +18,7 @@
   --color-foreground: var(--foreground);
   --color-brand: var(--brand);
   --color-brand-dark: var(--brand-dark);
+  --color-brand-deep: var(--brand-deep);
   --color-brand-light: var(--brand-light);
   --color-brand-soft: var(--brand-soft);
   --color-accent: var(--accent);
@@ -29,8 +31,27 @@ html {
 }
 
 body {
-  background: linear-gradient(180deg, #ece1f9 0%, #f6f1fb 22%, #fbf8f4 55%, #fdfbf8 100%)
-    fixed;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 22%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 28% 8%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 45% 32%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 62% 14%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 75% 40%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 88% 22%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 8% 55%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 33% 68%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 52% 82%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 70% 72%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1.5px 1.5px at 92% 60%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 18% 88%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 96% 90%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(circle at 84% 10%, rgba(244, 213, 141, 0.22), rgba(244, 213, 141, 0) 42%),
+    radial-gradient(circle at 10% 0%, rgba(164, 140, 255, 0.16), rgba(164, 140, 255, 0) 45%),
+    linear-gradient(180deg, #0a0920 0%, #0c0a24 28%, #08071a 62%, #050410 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   color: var(--foreground);
   font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", Arial, Helvetica, sans-serif;
   letter-spacing: 0.01em;
@@ -41,7 +62,31 @@ h2,
 h3,
 .font-heading {
   font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Hiragino Sans", sans-serif;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 24px rgba(164, 140, 255, 0.35);
+}
+
+/* decorative fixed moon in the top-right corner, visible through the frosted header */
+.moon-deco {
+  position: fixed;
+  top: -70px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fdf6e3 0%,
+    #f3e7c9 32%,
+    #cdbf9a 58%,
+    #7c7263 100%
+  );
+  box-shadow:
+    0 0 90px 30px rgba(244, 213, 141, 0.22),
+    0 0 220px 90px rgba(164, 140, 255, 0.12);
+  opacity: 0.85;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* soft floating glow blobs used behind hero / decorative sections */
@@ -49,28 +94,33 @@ h3,
   position: absolute;
   border-radius: 9999px;
   filter: blur(60px);
-  opacity: 0.5;
+  opacity: 0.35;
   pointer-events: none;
   z-index: 0;
 }
 
 .card-soft {
-  background: color-mix(in srgb, white 88%, transparent);
-  backdrop-filter: blur(6px);
+  background: rgba(22, 19, 46, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(164, 140, 255, 0.14);
   border-radius: 1.75rem;
   box-shadow:
-    0 1px 2px rgba(110, 90, 148, 0.04),
-    0 12px 32px -12px rgba(110, 90, 148, 0.18);
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 20px 45px -18px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(164, 140, 255, 0.04);
   transition:
     transform 0.35s ease,
-    box-shadow 0.35s ease;
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .card-soft:hover {
   transform: translateY(-3px);
+  border-color: rgba(164, 140, 255, 0.32);
   box-shadow:
-    0 1px 2px rgba(110, 90, 148, 0.05),
-    0 20px 40px -14px rgba(110, 90, 148, 0.26);
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 26px 55px -18px rgba(0, 0, 0, 0.7),
+    0 0 40px -6px rgba(164, 140, 255, 0.25);
 }
 
 @keyframes drift {
@@ -100,6 +150,16 @@ h3,
 
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease both;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 ::selection {

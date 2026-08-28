@@ -11,9 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ja" className="h-full antialiased">
       <body className="min-h-full flex flex-col text-foreground">
+        <div className="moon-deco" aria-hidden="true" />
         <Header />
-        <main className="flex-1">{children}</main>
-        <footer className="mt-8 bg-white/40 py-10 text-center text-sm text-foreground/50">
+        <main className="relative z-[1] flex-1">{children}</main>
+        <footer className="relative z-[1] mt-8 border-t border-white/5 bg-white/[0.03] py-10 text-center text-sm text-foreground/50">
           <p className="font-heading">🌙 よるのこえ Talent — 癒し系ASMR配信者事務所</p>
           <p className="mt-2 text-xs tracking-wide">
             © 2026 Yorunokoe Talent. 本サイトはプロトタイプ版です。

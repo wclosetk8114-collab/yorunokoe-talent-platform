@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { isStripeConfigured } from "@/lib/payments";
+import { getTipPaymentLink } from "@/lib/stripeLinks";
 
 export async function POST(request) {
   const supabase = await createClient();
@@ -17,8 +17,16 @@ export async function POST(request) {
   const talentId = body.talentId;
   const message = (body.message || "").slice(0, 300);
 
-  if (!talentId || !amount || amount < 100) {
+  if (!talentId || !amount) {
     return NextResponse.json({ error: "入力内容を確認してください。" }, { status: 400 });
+  }
+
+  const paymentLink = getTipPaymentLink(amount);
+  if (!paymentLink) {
+    return NextResponse.json(
+      { error: "現在は ¥300 / ¥500 / ¥1000 / ¥3000 からお選びください。" },
+      { status: 400 }
+    );
   }
 
   const { data: tip, error } = await supabase
@@ -37,16 +45,11 @@ export async function POST(request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  if (isStripeConfigured()) {
-    // TODO: Stripe Checkout Session (one-time payment) をここで作成し、
-    // session.url を redirectUrl として返す。
-    return NextResponse.json(
-      { error: "Stripe連携は準備中です。" },
-      { status: 501 }
-    );
+  const url = new URL(paymentLink);
+  url.searchParams.set("client_reference_id", `tip:${tip.id}`);
+  if (user.email) {
+    url.searchParams.set("prefilled_email", user.email);
   }
 
-  return NextResponse.json({
-    redirectUrl: `/checkout/demo?type=tip&id=${tip.id}`,
-  });
+  return NextResponse.json({ redirectUrl: url.toString() });
 }
