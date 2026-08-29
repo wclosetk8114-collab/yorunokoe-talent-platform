@@ -40,7 +40,7 @@ export default function TipPanel({ talent, isLoggedIn }) {
 
   return (
     <div className="card-soft p-7">
-      <h2 className="font-heading text-lg font-bold text-brand-dark">💜 投げ銭で応援する</h2>
+      <h2 className="font-heading text-lg font-bold text-brand-dark">🥂 投げ銭で応援する</h2>
       <p className="mt-1 text-xs text-foreground/45">そっと届く、単発の応援ギフトです。</p>
 
       <div className="mt-5 grid grid-cols-4 gap-2">
@@ -51,7 +51,7 @@ export default function TipPanel({ talent, isLoggedIn }) {
             onClick={() => setAmount(a)}
             className={`rounded-2xl px-2 py-2.5 text-sm font-semibold transition-all duration-200 ${
               amount === a
-                ? "bg-brand text-white shadow-md shadow-brand/25"
+                ? "bg-brand text-ink shadow-md shadow-brand/25"
                 : "bg-brand-light/60 text-foreground/60 hover:bg-brand-light"
             }`}
           >
@@ -74,7 +74,7 @@ export default function TipPanel({ talent, isLoggedIn }) {
         type="button"
         onClick={handleTip}
         disabled={loading}
-        className="mt-5 w-full rounded-full bg-brand py-3 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
+        className="mt-5 w-full rounded-full bg-brand py-3 text-sm font-semibold text-ink shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-deep hover:text-brand-dark hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
       >
         {loading ? "処理中..." : `¥${amount.toLocaleString()} を投げ銭する`}
       </button>

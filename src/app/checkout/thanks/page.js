@@ -11,7 +11,7 @@ export default async function ThanksPage({ searchParams }) {
         style={{ top: "-3rem", left: "50%", marginLeft: "-9rem" }}
       />
       <div className="relative animate-fade-in-up">
-        <div className="text-5xl">🌙💜</div>
+        <div className="text-5xl">🌙🥂</div>
         <h1 className="font-heading mt-5 text-xl font-bold text-brand-dark">
           {isSubscribe ? "ご加入ありがとうございます" : "投げ銭ありがとうございます"}
         </h1>
@@ -23,7 +23,7 @@ export default async function ThanksPage({ searchParams }) {
         <div className="mt-9 flex justify-center gap-3">
           <Link
             href="/mypage"
-            className="rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg"
+            className="rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-ink shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-deep hover:text-brand-dark hover:shadow-lg"
           >
             マイページへ
           </Link>

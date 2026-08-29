@@ -1,16 +1,18 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&display=swap");
 
 :root {
-  --background: #05040f;
-  --foreground: #e8e4f8;
-  --brand: #a48cff;
-  --brand-dark: #f1ecff;
-  --brand-deep: #4b3d99;
-  --brand-light: #16132e;
-  --brand-soft: #3d3572;
-  --accent: #f4d58d;
-  --accent-light: #2a2440;
-  --glow: #8fb6ff;
+  --background: #0a0806;
+  --foreground: #ece4d3;
+  --brand: #c9a463;
+  --brand-dark: #f5ead0;
+  --brand-deep: #8a6a2f;
+  --brand-light: #17130c;
+  --brand-soft: #4a3c22;
+  --accent: #dcb877;
+  --accent-light: #241c10;
+  --glow: #c9a463;
+  --ink: #16120c;
 }
 
 @theme inline {
@@ -24,6 +26,7 @@
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
   --color-glow: var(--glow);
+  --color-ink: var(--ink);
 }
 
 html {
@@ -33,22 +36,22 @@ html {
 body {
   background-color: var(--background);
   background-image:
-    radial-gradient(1.5px 1.5px at 12% 22%, rgba(255, 255, 255, 0.9), transparent),
-    radial-gradient(1px 1px at 28% 8%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.5px 1.5px at 45% 32%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1px 1px at 62% 14%, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(1.5px 1.5px at 75% 40%, rgba(255, 255, 255, 0.55), transparent),
-    radial-gradient(1px 1px at 88% 22%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.5px 1.5px at 8% 55%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1px 1px at 33% 68%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.5px 1.5px at 52% 82%, rgba(255, 255, 255, 0.55), transparent),
-    radial-gradient(1px 1px at 70% 72%, rgba(255, 255, 255, 0.65), transparent),
-    radial-gradient(1.5px 1.5px at 92% 60%, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1px 1px at 18% 88%, rgba(255, 255, 255, 0.5), transparent),
-    radial-gradient(1px 1px at 96% 90%, rgba(255, 255, 255, 0.5), transparent),
-    radial-gradient(circle at 84% 10%, rgba(244, 213, 141, 0.22), rgba(244, 213, 141, 0) 42%),
-    radial-gradient(circle at 10% 0%, rgba(164, 140, 255, 0.16), rgba(164, 140, 255, 0) 45%),
-    linear-gradient(180deg, #0a0920 0%, #0c0a24 28%, #08071a 62%, #050410 100%);
+    radial-gradient(1.5px 1.5px at 12% 22%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 28% 8%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 45% 32%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 62% 14%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 75% 40%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 88% 22%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 8% 55%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 33% 68%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 52% 82%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 70% 72%, rgba(255, 255, 255, 0.48), transparent),
+    radial-gradient(1.5px 1.5px at 92% 60%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 18% 88%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 96% 90%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(circle at 84% 10%, rgba(201, 164, 99, 0.24), rgba(201, 164, 99, 0) 42%),
+    radial-gradient(circle at 10% 0%, rgba(138, 106, 47, 0.16), rgba(138, 106, 47, 0) 45%),
+    linear-gradient(180deg, #0d0b07 0%, #100d08 28%, #0a0806 62%, #050403 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -61,9 +64,9 @@ h1,
 h2,
 h3,
 .font-heading {
-  font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Hiragino Sans", sans-serif;
-  letter-spacing: 0.03em;
-  text-shadow: 0 0 24px rgba(164, 140, 255, 0.35);
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 22px rgba(201, 164, 99, 0.3);
 }
 
 /* decorative fixed moon in the top-right corner, visible through the frosted header */
@@ -82,8 +85,8 @@ h3,
     #7c7263 100%
   );
   box-shadow:
-    0 0 90px 30px rgba(244, 213, 141, 0.22),
-    0 0 220px 90px rgba(164, 140, 255, 0.12);
+    0 0 90px 30px rgba(201, 164, 99, 0.24),
+    0 0 220px 90px rgba(138, 106, 47, 0.14);
   opacity: 0.85;
   z-index: 0;
   pointer-events: none;
@@ -94,20 +97,20 @@ h3,
   position: absolute;
   border-radius: 9999px;
   filter: blur(60px);
-  opacity: 0.35;
+  opacity: 0.3;
   pointer-events: none;
   z-index: 0;
 }
 
 .card-soft {
-  background: rgba(22, 19, 46, 0.55);
+  background: rgba(19, 16, 11, 0.6);
   backdrop-filter: blur(14px);
-  border: 1px solid rgba(164, 140, 255, 0.14);
-  border-radius: 1.75rem;
+  border: 1px solid rgba(201, 164, 99, 0.18);
+  border-radius: 1.25rem;
   box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.2),
-    0 20px 45px -18px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(164, 140, 255, 0.04);
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 20px 45px -18px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(201, 164, 99, 0.06);
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease,
@@ -116,11 +119,11 @@ h3,
 
 .card-soft:hover {
   transform: translateY(-3px);
-  border-color: rgba(164, 140, 255, 0.32);
+  border-color: rgba(201, 164, 99, 0.4);
   box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.25),
-    0 26px 55px -18px rgba(0, 0, 0, 0.7),
-    0 0 40px -6px rgba(164, 140, 255, 0.25);
+    0 1px 2px rgba(0, 0, 0, 0.35),
+    0 26px 55px -18px rgba(0, 0, 0, 0.8),
+    0 0 40px -8px rgba(201, 164, 99, 0.3);
 }
 
 @keyframes drift {

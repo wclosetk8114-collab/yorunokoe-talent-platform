@@ -8,7 +8,7 @@ export default async function Header() {
   } = await supabase.auth.getUser();
 
   return (
-    <header className="sticky top-0 z-20 border-b border-white/5 bg-[#050410]/60 backdrop-blur-lg">
+    <header className="sticky top-0 z-20 border-b border-brand/15 bg-[#0a0806]/70 backdrop-blur-lg">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-xl">🌙</span>
@@ -31,7 +31,7 @@ export default async function Header() {
               <form action="/api/auth/signout" method="post">
                 <button
                   type="submit"
-                  className="rounded-full bg-white/[0.06] px-4 py-1.5 text-brand shadow-sm shadow-brand-soft/30 ring-1 ring-inset ring-brand-soft/30 transition hover:bg-brand-light"
+                  className="rounded-full bg-brand/[0.08] px-4 py-1.5 text-brand shadow-sm shadow-brand-soft/30 ring-1 ring-inset ring-brand-soft/30 transition hover:bg-brand-light"
                 >
                   ログアウト
                 </button>
@@ -40,7 +40,7 @@ export default async function Header() {
           ) : (
             <Link
               href="/login"
-              className="rounded-full bg-brand px-5 py-2 text-white shadow-md shadow-brand/20 transition hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg"
+              className="rounded-full bg-brand px-5 py-2 text-ink shadow-md shadow-brand/20 transition hover:-translate-y-0.5 hover:bg-brand-deep hover:text-brand-dark hover:shadow-lg"
             >
               ログイン / 新規登録
             </Link>

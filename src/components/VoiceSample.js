@@ -41,7 +41,7 @@ function TrackButton({ src, label, icon }) {
       <button
         type="button"
         onClick={toggle}
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-white shadow-md shadow-brand/25 transition-transform duration-200 hover:scale-105"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-ink shadow-md shadow-brand/25 transition-transform duration-200 hover:scale-105"
         aria-label={playing ? "一時停止" : "再生"}
       >
         {playing ? "❚❚" : "▶"}

@@ -34,7 +34,7 @@ export default function SubscribePanel({ talent, isLoggedIn, subscription }) {
 
   return (
     <div className="card-soft p-7">
-      <h2 className="font-heading text-lg font-bold text-brand-dark">🌙 月額会員（ファンクラブ）</h2>
+      <h2 className="font-heading text-lg font-bold text-brand-dark">🌙 月額会員（プレミアム会員）</h2>
       <p className="mt-1 text-xs text-foreground/45">
         限定ASMR音源・配信アーカイブが楽しめます。
       </p>
@@ -60,7 +60,7 @@ export default function SubscribePanel({ talent, isLoggedIn, subscription }) {
           type="button"
           onClick={handleSubscribe}
           disabled={loading}
-          className="mt-5 w-full rounded-full bg-brand-light/60 py-3 text-sm font-semibold text-brand shadow-md shadow-brand-soft/30 ring-1 ring-inset ring-brand-soft/50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:text-white hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
+          className="mt-5 w-full rounded-full bg-brand-light/60 py-3 text-sm font-semibold text-brand shadow-md shadow-brand-soft/30 ring-1 ring-inset ring-brand-soft/50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:text-ink hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
         >
           {loading ? "処理中..." : "月額会員になる"}
         </button>

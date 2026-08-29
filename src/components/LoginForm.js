@@ -53,7 +53,7 @@ export default function LoginForm({ nextPath }) {
           onClick={() => setMode("login")}
           className={`flex-1 rounded-full py-2 font-semibold transition-all duration-200 ${
             mode === "login"
-              ? "bg-brand text-white shadow-sm shadow-brand/40"
+              ? "bg-brand text-ink shadow-sm shadow-brand/40"
               : "text-foreground/45"
           }`}
         >
@@ -64,7 +64,7 @@ export default function LoginForm({ nextPath }) {
           onClick={() => setMode("signup")}
           className={`flex-1 rounded-full py-2 font-semibold transition-all duration-200 ${
             mode === "signup"
-              ? "bg-brand text-white shadow-sm shadow-brand/40"
+              ? "bg-brand text-ink shadow-sm shadow-brand/40"
               : "text-foreground/45"
           }`}
         >
@@ -105,7 +105,7 @@ export default function LoginForm({ nextPath }) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-full bg-brand py-3 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
+        className="w-full rounded-full bg-brand py-3 text-sm font-semibold text-ink shadow-md shadow-brand/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-deep hover:text-brand-dark hover:shadow-lg disabled:opacity-50 disabled:hover:translate-y-0"
       >
         {loading ? "処理中..." : mode === "signup" ? "登録する" : "ログインする"}
       </button>
