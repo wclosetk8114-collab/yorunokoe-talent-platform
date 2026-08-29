@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import TipPanel from "@/components/TipPanel";
@@ -45,10 +46,20 @@ export default async function TalentPage({ params }) {
 
       <div className="relative flex items-center gap-5 animate-fade-in-up">
         <div
-          className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full text-4xl shadow-inner"
+          className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full text-4xl shadow-inner ring-1 ring-brand/20"
           style={{ backgroundColor: `${talent.accent_color}33` }}
         >
-          {talent.avatar_emoji}
+          {talent.avatar_image_url ? (
+            <Image
+              src={talent.avatar_image_url}
+              alt={talent.display_name}
+              width={80}
+              height={80}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            talent.avatar_emoji
+          )}
         </div>
         <div>
           <h1 className="font-heading text-2xl font-bold text-foreground">

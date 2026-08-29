@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 
@@ -69,10 +70,20 @@ export default async function HomePage() {
               style={{ animationDelay: `${i * 80}ms` }}
             >
               <div
-                className="mb-5 flex h-16 w-16 items-center justify-center rounded-full text-3xl transition group-hover:scale-105"
+                className="mb-5 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full text-3xl shadow-inner ring-1 ring-brand/20 transition group-hover:scale-105"
                 style={{ backgroundColor: `${talent.accent_color}33` }}
               >
-                {talent.avatar_emoji}
+                {talent.avatar_image_url ? (
+                  <Image
+                    src={talent.avatar_image_url}
+                    alt={talent.display_name}
+                    width={64}
+                    height={64}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  talent.avatar_emoji
+                )}
               </div>
               <h3 className="font-heading text-lg font-bold text-foreground group-hover:text-brand">
                 {talent.display_name}
