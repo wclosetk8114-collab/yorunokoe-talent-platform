@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import TrialPlayButton from "@/components/TrialPlayButton";
 
 export const dynamic = "force-dynamic";
 
@@ -91,6 +92,7 @@ export default async function HomePage() {
               <p className="mt-1.5 text-sm leading-relaxed text-foreground/55">
                 {talent.tagline}
               </p>
+              <TrialPlayButton handle={talent.handle} />
               <p className="mt-5 text-xs font-semibold tracking-wide text-accent">
                 月額会員 ¥{talent.monthly_plan_price?.toLocaleString()}〜
               </p>
