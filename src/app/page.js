@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import TrialPlayButton from "@/components/TrialPlayButton";
+import PurposeAudioFinder from "@/components/PurposeAudioFinder";
 
 export const dynamic = "force-dynamic";
 
@@ -100,6 +101,10 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      {!error && talents && talents.length > 0 && (
+        <PurposeAudioFinder talents={talents} />
+      )}
     </div>
   );
 }
